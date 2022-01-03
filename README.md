@@ -1,4 +1,7 @@
 # msc-stretch-textarea
+
+![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/msc-stretch-textarea) [![DeepScan grade](https://deepscan.io/api/teams/16372/projects/19731/branches/516231/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=16372&pid=19731&bid=516231)
+
 Users used to experience autogrowing &lt;textarea /&gt; since Facebook announced this fancy effect. There are so many skills to apply this effect in web page. Here comes [the most cleanest trick for autogrowing textareas](https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/).
 
 With this trick, decvelopers could apply [CSS > Grid](https://css-tricks.com/snippets/css/complete-guide-grid/) to make &lt;textarea /&gt; autogrowing with fewest event listeners. Very smart &amp; bravo !! &lt;msc-stretch-textarea /&gt; is a web component which wrap this trick to let developers could easy adopt this effect in web page instead of annoying HTML code &amp; CSS setting. 

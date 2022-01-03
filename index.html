@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Web Component: &lt;msc-stretch-textarea /&gt; - web components based autogrowing &lt;textarea /&gt; effect</title>
+<meta name="description" content="Users used to experience autogrowing <textarea /> since Facebook announced this fancy effect. There are so many skills to apply this effect in web page. Here comes the most cleanest trick for autogrowing textareas. With this trick, decvelopers could apply CSS > Grid to make <textarea /> autogrowing with fewest event listeners. Very smart & bravo !! <msc-stretch-textarea /> is a web component which wrap this trick to let developers could easy adopt this effect in web page instead of annoying HTML code & CSS setting. All we need to do is just make a few setting and everything will be all set." />
+<script type="module" src="mjs/wc-msc-stretch-textarea.js"></script>
+<style>
+/*** The new CSS Reset - version 1.4.2 (last updated 30.11.2021) ***/
+/* All rights reserved from https://elad2412.github.io/the-new-css-reset/ */
+*:where(:not(iframe,canvas,img,svg,video):not(svg *,symbol *)){all:unset;display:revert;}
+*,*::before,*::after{box-sizing:border-box;}
+ol,ul,menu{list-style:none;}
+img{max-width:100%;}
+table{border-collapse:collapse;}
+textarea{white-space:revert;}
+:where([contenteditable]){-moz-user-modify:read-write;-webkit-user-modify:read-write;overflow-wrap:break-word;-webkit-line-break:after-white-space;}
+
+/* page */
+html,body{font-family:system-ui,sans-serif;text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;font-size:16px;}
+#hd,#ft{display:none;}
+
+body{position:relative;inline-size:100vw;block-size:100vh;}
+
+/* msc-stretch-textarea */
+msc-stretch-textarea:not(:defined){visibility:hidden;}
+.textarea-wrap{position:relative;}
+.demo {
+  --accent-color: #5723e5;
+  --text-color: #212121;
+  --font-size: 16px;
+
+  position:absolute;
+  inset-inline-start:50%;
+  inset-block-start:50%;
+  inline-size: 80vw;
+  transform:translate(-50%,-50%);
+
+  inline-size: 100%;
+  max-inline-size: 800px;
+  background-color:#fff;
+  padding:2em 2em 1.125em;
+  border-radius:.5em;
+  box-sizing: border-box;
+  margin:2em auto;
+}
+.demo msc-stretch-textarea {
+  --msc-stretch-textarea-font-size: var(--font-size);
+  --msc-stretch-textarea-min-block-size: 160px;
+  --msc-stretch-textarea-padding: 16px;
+  --msc-stretch-textarea-border-radius: 16px;
+  --msc-stretch-textarea-box-shadow: inset 0 0 0 1px #9e9e9e;
+  --msc-stretch-textarea-transition: box-shadow 150ms;
+  --msc-stretch-textarea-placeholder-color: #666;
+  --msc-stretch-textarea-color: var(--text-color);
+  --msc-stretch-textarea-caret-color: var(--accent-color);
+  --msc-stretch-textarea-selection-background: rgba(87,35,229,.15);
+}
+.demo msc-stretch-textarea:focus {
+  --msc-stretch-textarea-box-shadow: inset 0 0 0 2px var(--accent-color);
+}
+
+.demo label {
+  position: absolute;
+  inset-inline-start: 11px;
+  inset-block-start: 16px;
+  font-size: var(--font-size);
+  color: var(--text-color);
+  padding: 0 6px;
+  pointer-events: none;
+  transition: transform 100ms ease,color 100ms ease,background-color 100ms ease;
+  will-change: transform,color,background-color;
+  background-color: #fff;
+}
+
+.demo msc-stretch-textarea:focus~label{
+  color: var(--accent-color);
+  background-color: #fff;
+  transform: translateY(-24px) scale(0.85);
+}
+
+.demo msc-stretch-textarea:not([data-content-length="0"])~label{
+  background-color: #fff;
+  transform: translateY(-24px) scale(0.85);
+}
+
+.counter{font-size:.75em;color:#666;line-height:2;display:block;text-align:right;padding-inline-end:16px;}
+.counter::before{content:'count: ';}
+
+@media (hover: hover) {
+  .demo msc-stretch-textarea:hover {
+    --msc-stretch-textarea-box-shadow: inset 0 0 0 1px var(--accent-color);
+  }
+
+  .demo msc-stretch-textarea:focus:hover {
+    --msc-stretch-textarea-box-shadow: inset 0 0 0 2px var(--accent-color);
+  }
+
+  .demo msc-stretch-textarea:not([data-content-length="0"]):hover~label {
+    color: var(--accent-color);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="demo">
+  <div class="textarea-wrap">
+    <msc-stretch-textarea>
+      <textarea name="my-stretch-textarea" placeholder="type someting here..."></textarea>
+    </msc-stretch-textarea>
+    <label>msc-stretch-textarea</label>
+    <span class="counter">0</span>
+  </div>
+</div>
+
+<script>
+customElements.whenDefined('msc-stretch-textarea').then(
+  () => {
+    const stretchTextarea = document.querySelector('.demo msc-stretch-textarea');
+    const counter = document.querySelector('.counter');
+
+    stretchTextarea.addEventListener('msc-stretch-textarea-input',
+      (evt) => {
+        counter.textContent = stretchTextarea.dataset.contentLength;
+      }
+    );
+  }
+);
+</script>
+
+</body>
+
+</html>

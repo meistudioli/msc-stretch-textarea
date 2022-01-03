@@ -1,0 +1,25 @@
+{
+  "name": "msc-stretch-textarea",
+  "version": "1.0.0",
+  "description": "Users used to experience autogrowing <textarea /> since Facebook announced this fancy effect. There are so many skills to apply this effect in web page. Here comes the most cleanest trick for autogrowing textareas. With this trick, decvelopers could apply CSS > Grid to make <textarea /> autogrowing with fewest event listeners. Very smart & bravo !! <msc-stretch-textarea /> is a web component which wrap this trick to let developers could easy adopt this effect in web page instead of annoying HTML code & CSS setting. All we need to do is just make a few setting and everything will be all set.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meistudioli/msc-stretch-textarea.git"
+  },
+  "keywords": [
+    "web",
+    "front-end",
+    "web component",
+    "textarea"
+  ],
+  "author": "Paul Li",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/meistudioli/msc-stretch-textarea/issues"
+  },
+  "homepage": "https://github.com/meistudioli/msc-stretch-textarea#readme"
+}
